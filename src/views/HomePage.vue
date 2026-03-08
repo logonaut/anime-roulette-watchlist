@@ -32,7 +32,8 @@ const spinLabel = computed(() => {
         <p class="text-xs font-semibold tracking-[0.3em] text-cyan-300/90 uppercase">Project #4</p>
         <h1 class="mt-2 text-4xl font-black text-white sm:text-5xl">Anime Roulette Machine</h1>
         <p class="mt-2 max-w-3xl text-sm text-slate-300 sm:text-base">
-          Spin the reel, request a random anime from Jikan with VueUse useFetch...
+          Spin the reel, request a random anime from Jikan with VueUse useFetch, and learn how REST
+          APIs signal rate limiting with HTTP 429.
         </p>
       </header>
       <!-- Content grid -->
@@ -45,12 +46,14 @@ const spinLabel = computed(() => {
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 class="text-xl font-bold text-white">Roulette</h2>
-                <p class="text-sm text-slate-300">Pull the lever for your next random anime.</p>
+                <p class="text-sm text-slate-300">
+                  Pull the lever for your next random anime recommendation.
+                </p>
               </div>
               <button
                 type="button"
                 :disabled="spinDisabled"
-                class="disabled:cursor-not-allowed disabled:opacity-60 ..."
+                class="cursor-pointer rounded-full border border-cyan-300/70 bg-cyan-400/20 px-6 py-3 text-base font-black tracking-wide text-cyan-100 hover:bg-cyan-400/30 disabled:cursor-not-allowed disabled:opacity-60"
                 @click="spin"
               >
                 {{ spinLabel }}
@@ -73,12 +76,10 @@ const spinLabel = computed(() => {
           />
         </section>
         <!-- Right column -->
-        <div>
-          <WatchList
-            :items="watchlist"
-            @remove="removeFromWatchlist"
-          />
-        </div>
+        <WatchList
+          :items="watchlist"
+          @remove="removeFromWatchlist"
+        />
       </div>
     </div>
   </main>
