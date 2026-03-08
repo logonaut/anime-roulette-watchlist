@@ -38,24 +38,24 @@ watch(
 </script>
 
 <template>
-  <section class="rounded-3xl border border-slate-700/70 bg-slate-900/60 p-5 shadow-2xl ...">
+  <section class="rounded-3xl border border-zinc-700/70 bg-zinc-900/60 p-5 shadow-2xl ...">
     <!-- Loading -->
     <div
       v-if="props.loading"
       class="space-y-4"
     >
-      <div class="flex items-center gap-3 text-cyan-300">
+      <div class="flex items-center gap-3 text-orange-300">
         <div
-          class="h-5 w-5 animate-spin rounded-full border-2 border-cyan-400 border-t-transparent"
+          class="h-5 w-5 animate-spin rounded-full border-2 border-orange-400 border-t-transparent"
         ></div>
         <p>Shuffling anime reels...</p>
       </div>
       <div class="grid grid-cols-3 gap-2">
-        <div class="h-3 animate-pulse rounded bg-slate-700"></div>
-        <div class="h-3 animate-pulse rounded bg-slate-700"></div>
-        <div class="h-3 animate-pulse rounded bg-slate-700"></div>
+        <div class="h-3 animate-pulse rounded bg-zinc-700"></div>
+        <div class="h-3 animate-pulse rounded bg-zinc-700"></div>
+        <div class="h-3 animate-pulse rounded bg-zinc-700"></div>
       </div>
-      <div class="h-72 animate-pulse rounded-2xl bg-slate-800"></div>
+      <div class="h-72 animate-pulse rounded-2xl bg-zinc-800"></div>
     </div>
 
     <!-- Error -->
@@ -73,17 +73,17 @@ watch(
       class="space-y-4"
     >
       <!-- Poster -->
-      <div class="overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-800/60">
+      <div class="overflow-hidden rounded-2xl border border-zinc-700/80 bg-zinc-800/60">
         <img
           v-if="animeImage"
           :src="animeImage"
           :alt="anime.title"
-          class="h-80 w-full bg-slate-900/50 object-contain"
+          class="h-80 w-full bg-zinc-900/50 object-contain"
           loading="lazy"
         />
         <div
           v-else
-          class="flex h-80 items-center justify-center bg-slate-800 text-slate-300"
+          class="flex h-80 items-center justify-center bg-zinc-800 text-zinc-300"
         >
           No poster
         </div>
@@ -92,21 +92,21 @@ watch(
       <!-- Title & meta -->
       <div>
         <h2 class="text-2xl font-black text-white">{{ anime.title }}</h2>
-        <p class="mt-1 text-sm text-slate-300">
+        <p class="mt-1 text-sm text-zinc-300">
           Score: <span class="font-semibold text-amber-300">{{ anime.score ?? 'N/A' }}</span> ·
           Episodes:
-          <span class="font-semibold text-cyan-300">{{ anime.episodes ?? 'Unknown' }}</span> ·
+          <span class="font-semibold text-orange-300">{{ anime.episodes ?? 'Unknown' }}</span> ·
           Rating: <span class="font-semibold text-pink-300">{{ anime.rating || 'Unknown' }}</span>
         </p>
       </div>
 
       <!-- Synopsis -->
-      <p class="text-sm leading-relaxed text-slate-200">
+      <p class="text-sm leading-relaxed text-zinc-200">
         {{ visibleSynopsis }}
         <button
           v-if="needsTruncation"
           type="button"
-          class="ml-2 text-cyan-300 underline-offset-4 hover:underline"
+          class="ml-2 text-orange-300 underline-offset-4 hover:underline"
           @click="synopsisExpanded = !synopsisExpanded"
         >
           {{ synopsisExpanded ? 'Show less' : 'Read more' }}
@@ -119,7 +119,7 @@ watch(
           type="button"
           :disabled="inWatchlist"
           @click="emit('add', anime)"
-          class="rounded-full border border-cyan-300/60 bg-cyan-400/15 px-4 py-2 text-sm font-semibold text-cyan-100 disabled:cursor-not-allowed disabled:opacity-50"
+          class="rounded-full border border-orange-300/60 bg-orange-400/15 px-4 py-2 text-sm font-semibold text-orange-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {{ inWatchlist ? 'In Watchlist' : 'Add to Watchlist' }}
         </button>
@@ -137,7 +137,7 @@ watch(
     <!-- Empty / default -->
     <div
       v-else
-      class="rounded-2xl border border-slate-700/60 bg-slate-800/50 p-6 text-center text-slate-300"
+      class="rounded-2xl border border-zinc-700/60 bg-zinc-800/50 p-6 text-center text-zinc-300"
     >
       Pull the lever to request your first random anime.
     </div>

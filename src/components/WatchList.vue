@@ -4,10 +4,10 @@ const emit = defineEmits(['remove'])
 </script>
 
 <template>
-  <aside class="rounded-3xl border border-slate-700/70 bg-slate-900/60 p-5 ...">
+  <aside class="rounded-3xl border border-zinc-700/70 bg-zinc-900/60 p-5 ...">
     <div class="mb-4 flex items-center justify-between">
       <h2 class="text-xl font-bold text-white">Watchlist</h2>
-      <span class="rounded-full bg-slate-700 px-3 py-1 text-xs font-semibold text-slate-200">
+      <span class="rounded-full bg-zinc-700 px-3 py-1 text-xs font-semibold text-zinc-200">
         {{ items.length }}
       </span>
     </div>
@@ -26,7 +26,7 @@ const emit = defineEmits(['remove'])
       <li
         v-for="item in items"
         :key="item.mal_id"
-        class="rounded-2xl border border-slate-700/70 bg-slate-800/60 p-3"
+        class="rounded-2xl border border-zinc-700/70 bg-zinc-800/60 p-3"
       >
         <div class="flex gap-3">
           <img
@@ -38,14 +38,14 @@ const emit = defineEmits(['remove'])
           />
           <div class="min-w-0 flex-1">
             <h3 class="truncate text-sm font-semibold text-white">{{ item.title }}</h3>
-            <p class="mt-1 text-xs text-slate-300">
+            <p class="mt-1 text-xs text-zinc-300">
               ⭐ {{ item.score ?? 'N/A' }} · Ep {{ item.episodes ?? '?' }}
             </p>
             <div class="mt-3 flex gap-2">
               <a
                 :href="item.url"
                 target="_blank"
-                class="text-xs font-semibold text-cyan-300 hover:underline"
+                class="text-xs font-semibold text-orange-300 hover:underline"
                 >MAL Link</a
               >
               <!-- emit mal_id NUMBER, not the whole item -->
