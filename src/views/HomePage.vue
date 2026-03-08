@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue'
 import AnimeCard from '@/components/AnimeCard.vue'
+import WatchList from '@/components/WatchList.vue'
 import { useAnimeRoulette } from '@/composables/useAnimeRoulette'
-
 const {
   anime,
   loading,
@@ -14,9 +14,7 @@ const {
   isInWatchlist,
   removeFromWatchlist,
 } = useAnimeRoulette()
-
 const spinDisabled = computed(() => loading.value || cooldownLeft.value > 0)
-
 const spinLabel = computed(() => {
   if (loading.value) return 'Spinning...'
   if (cooldownLeft.value > 0) return `Cooldown ${cooldownLeft.value}s`
@@ -37,7 +35,6 @@ const spinLabel = computed(() => {
           Spin the reel, request a random anime from Jikan with VueUse useFetch...
         </p>
       </header>
-
       <!-- Content grid -->
       <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <!-- Left column -->
@@ -71,13 +68,16 @@ const spinLabel = computed(() => {
             :loading="loading"
             :error="error"
             :anime="anime"
+            :in-watchlist="Boolean(anime && isInWatchlist(anime.mal_id))"
+            @add="addToWatchlist"
           />
-          <!-- will error until created next -->
         </section>
-
         <!-- Right column -->
         <div>
-          <p class="text-slate-400">Watchlist goes here</p>
+          <WatchList
+            :items="watchlist"
+            @remove="removeFromWatchlist"
+          />
         </div>
       </div>
     </div>
